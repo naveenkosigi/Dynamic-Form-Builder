@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useCallback } from "react";
 import useInput from "./use-Input"
 
 
@@ -12,7 +12,10 @@ import useInput from "./use-Input"
  * @returns 
  */
 const Input = (props) => {
-    const { inputValue,changeHandler,isInvalid } = useInput('1',(value) => value >=5);
+
+    const { inputValue,changeHandler,isInvalid,hasTouched,touchHandler } = useInput(value => value > 5);
+
+    const isFieldValid = isInvalid && hasTouched;
     
     const inputOptions = {
         ...props.options.input
@@ -21,8 +24,8 @@ const Input = (props) => {
     return(
         <div className="form-group">
             <label for={props.options.input.id}>{props.options.label.name}</label>
-            <input {...inputOptions} onChange={changeHandler} value={inputValue} class="form-control"/>
-            {isInvalid && <p class="text-danger">.text-danger</p>}
+            <input {...inputOptions} onChange={changeHandler} value={inputValue} class="form-control" onBlur={touchHandler}/>
+            {isFieldValid && <p class="text-danger">Error Field</p>}
         </div>   
     )
 }

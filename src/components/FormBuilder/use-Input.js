@@ -1,21 +1,30 @@
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
-const useInput = (defaultValue,validator) => {
-    const [inputValue,setInputValue] = useState(defaultValue || '');
-    const [isInvalid,setInvalid] = useState(true);
-
-    const customValidator = useCallback(() => {
-        setInvalid(validator(inputValue));
-    },[validator]);
-
+const useInput = (customValidator) => {
+    const [inputValue,setInputValue] = useState('1');
+    const [isInvalid,setInvalid] = useState(false);
+    const [hasTouched,setHasTouched] = useState(false);
+    
+    useEffect(() => {
+        setInvalid(customValidator(inputValue));
+    },[customValidator]);
+    
     const changeHandler = (event) => {
         setInputValue(event.target.value);
-        customValidator();
+        setHasTouched(true);
     }
+
+    const touchHandler = (event) => {
+        setHasTouched(true);
+        setInvalid(customValidator(event.target.value));
+    }
+
     return{
         inputValue,
         changeHandler,
-        isInvalid
+        isInvalid,
+        hasTouched,
+        touchHandler
     }
 }
 
