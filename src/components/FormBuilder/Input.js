@@ -15,7 +15,7 @@ import useInput from "./use-Input"
  */
 const Input = (props) => {
 
-    const { inputValue,changeHandler,isInvalid,hasTouched,touchHandler } = useInput(props.options.misc.validator);
+    const { inputValue,changeHandler,isInvalid,hasTouched,touchHandler } = useInput(props.options);
 
     const isFieldValid = isInvalid && hasTouched;
     

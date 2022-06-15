@@ -9,7 +9,7 @@ const FormContextProvider = (props) => {
 
         props.formOptions.forEach((option) => {
             const inputName = option.input.name;
-            payLoad[inputName] = '';
+            payLoad[inputName] = '1';
         });
 
         console.log("payload constructor");
@@ -26,6 +26,10 @@ const FormContextProvider = (props) => {
               ...state,
               ...action.data,
             };
+          case "RESET":
+            return{
+                ...constructedPayload
+            }  
           default:
             return state;
         }
@@ -37,6 +41,7 @@ const FormContextProvider = (props) => {
 
     context.payload = state;
     context.updateField = (data) => {formActionDispatcher({type : 'UPDATE', data : data})};
+    context.resetForm = () => {formActionDispatcher({type : 'RESET'})};
 
     return(
         <FormContext.Provider value={context}>

@@ -20,13 +20,17 @@ const FormBuilder = (props) => {
     console.log(formContext.payload);
   };
 
+  const cancelHandler = () => {
+    formContext.resetForm();
+  }
+
   return (
     <form>
       {formConstructor}
       <button type="button" className="btn btn-primary" onClick={submitHandler}>
         Save
       </button>
-      <button type="button" className="btn btn-danger">
+      <button type="button" className="btn btn-danger" onClick={cancelHandler}>
         Cancel
       </button>
     </form>

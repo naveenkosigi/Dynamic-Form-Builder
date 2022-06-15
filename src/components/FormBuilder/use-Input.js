@@ -1,22 +1,28 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
+import FormContext from "./FormContext";
 
-const useInput = (customValidator) => {
-    const [inputValue,setInputValue] = useState('1');
+const useInput = (props) => {
+    
+    const formContext = useContext(FormContext);
+    const fieldName = props.input.name;
+
+    const inputValue = formContext.payload[fieldName];
+
     const [isInvalid,setInvalid] = useState(false);
     const [hasTouched,setHasTouched] = useState(false);
     
     useEffect(() => {
-        setInvalid(customValidator(inputValue));
-    },[customValidator]);
+        setInvalid(props.misc.validator(inputValue));
+    },[props.misc.validator]);
     
     const changeHandler = (event) => {
-        setInputValue(event.target.value);
+        formContext.updateField({[fieldName] : event.target.value});
         setHasTouched(true);
     }
 
     const touchHandler = (event) => {
         setHasTouched(true);
-        setInvalid(customValidator(event.target.value));
+        setInvalid(props.misc.validator(event.target.value));
     }
 
     return{
