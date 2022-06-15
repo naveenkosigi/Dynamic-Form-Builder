@@ -7,7 +7,8 @@ import useInput from "./use-Input"
  * @param {*} props
  * {
  *   label : {}
- *   input : {}   
+ *   input : {} 
+ *   misc : {}     
  * } 
  * @returns 
  */
