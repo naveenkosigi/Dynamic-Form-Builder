@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Input from './components/FormBuilder/Input';
 import FormBuilder from './components/FormBuilder/FormBuilder';
+import FormContextProvider from './components/FormBuilder/FormContextProvider';
 
 function App() {
   console.log("App render");
@@ -9,7 +10,7 @@ function App() {
   return (
     <div className="container">
       <h1>Test</h1>
-      <FormBuilder formOptions={[
+      <FormContextProvider formOptions={[
         {
           label : {name : 'Test Field'},
           input : {type : 'number',name : 'field1'},
