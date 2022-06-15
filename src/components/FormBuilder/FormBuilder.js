@@ -1,4 +1,5 @@
-import { useMemo, useReducer } from "react"
+import { useContext, useMemo, useReducer } from "react"
+import FormContext from "./FormContext";
 import Input from "./Input";
 /*  [
      {label : {}
@@ -9,20 +10,27 @@ import Input from "./Input";
  *   
 */
 const FormBuilder = (props) => {
+  const formConstructor = props.formOptions.map((option, index) => {
+    return <Input options={option} key={index} />;
+  });
 
-    
+  const formContext = useContext(FormContext);
 
-    const formConstructor = props.formOptions.map((option,index) => {
-        return (
-            <Input options={option} key={index}/>
-        );
-    })
+  const submitHandler = () => {
+    console.log(formContext.payload);
+  };
 
-    return(
-        <form>
-            {formConstructor}
-        </form>
-    )
-}
+  return (
+    <form>
+      {formConstructor}
+      <button type="button" className="btn btn-primary" onClick={submitHandler}>
+        Save
+      </button>
+      <button type="button" className="btn btn-danger">
+        Cancel
+      </button>
+    </form>
+  );
+};
 
 export default FormBuilder;

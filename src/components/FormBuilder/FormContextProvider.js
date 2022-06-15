@@ -20,19 +20,14 @@ const FormContextProvider = (props) => {
     console.log("Memoized",constructedPayload);
 
     const formReducer = (state,action) => {
-        switch(action.type){
-            case 'UPDATE' : 
-                return{
-                    ...state,
-                    ...action.data
-                }
-            case 'GET' : {
-                return{
-                    ...state
-                }
-            }    
-            default : 
-                return state;
+        switch (action.type) {
+          case "UPDATE":
+            return {
+              ...state,
+              ...action.data,
+            };
+          default:
+            return state;
         }
     }
 
