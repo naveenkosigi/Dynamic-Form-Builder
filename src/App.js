@@ -8,7 +8,14 @@ function App() {
       <h1>Test</h1>
       <Input options = {{
         label : {name : 'Test Field'},
-        input : {type : 'number'}
+        input : {type : 'number'},
+        misc : {validator : (value => value > 5)}
+      }}
+      />
+      <Input options = {{
+        label : {name : 'Test Field'},
+        input : {type : 'text'},
+        misc : {validator : (value => value.trim().length === 0)}
       }}
       />
     </div>
