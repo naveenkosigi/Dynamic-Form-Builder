@@ -1,4 +1,5 @@
 import { useMemo, useReducer } from "react"
+import Input from "./Input";
 /*  [
      {label : {}
  *   input : {} 
@@ -41,10 +42,18 @@ const FormBuilder = (props) => {
         }
     }
 
+    const formConstructor = props.formOptions.map((option) => {
+        return (
+            <Input options={option} />
+        );
+    })
+
     const [state,formActionDispatcher] = useReducer(formReducer,constructedPayload);
 
     return(
-        <h1>Form Builder</h1>
+        <form>
+            {formConstructor}
+        </form>
     )
 }
 
