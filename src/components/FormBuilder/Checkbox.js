@@ -1,7 +1,6 @@
 import { Fragment, useCallback, useContext, useEffect } from "react";
 import FormContext from "./FormContext";
-import useInput from "./use-Input"
-
+import useCheckbox from "./use-Checkbox";
 
 /**
  * 
@@ -15,7 +14,7 @@ import useInput from "./use-Input"
  */
 const Checkbox = (props) => {
 
-    const { inputValue,changeHandler,isInvalid,hasTouched,touchHandler } = useInput(props.options);
+    const { inputValue,changeHandler,isInvalid,hasTouched,touchHandler } = useCheckbox(props.options);
 
     const isFieldValid = isInvalid && hasTouched;
     
@@ -51,7 +50,7 @@ const Checkbox = (props) => {
 
     <div class="form-check">
     <label class="form-check-label">
-        <input type="checkbox" onChange={changeHandler} value={inputValue} name={props.options.input.name} onBlur={touchHandler} class="form-check-input"/>
+        <input type="checkbox" onChange={changeHandler} name={props.options.input.name} onBlur={touchHandler} class="form-check-input" checked={inputValue === true}/>
         {props.options.label.name}
     </label>
     </div>
