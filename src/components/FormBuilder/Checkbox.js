@@ -50,9 +50,10 @@ const Checkbox = (props) => {
 
     <div class="form-check">
     <label class="form-check-label">
-        <input type="checkbox" onChange={changeHandler} name={props.options.input.name} onBlur={touchHandler} class="form-check-input" checked={inputValue === true}/>
+        <input type="checkbox" onChange={changeHandler} name={props.options.input.name} class="form-check-input" checked={inputValue === true}/>
         {props.options.label.name}
     </label>
+    {isFieldValid && <p class="text-danger">Error Field</p>}
     </div>
     );
 }

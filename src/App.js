@@ -23,8 +23,7 @@ function App() {
         },
         {
           label : {name : 'Test Field 3'},
-          input : {type : 'checkbox',name : 'field3',id:'id3'},
-          misc : {validator : (value => value > 5)}
+          input : {type : 'checkbox',name : 'field3',id:'id3'}
         }
       ]}/>
     </div>
