@@ -13,7 +13,7 @@ const useInput = (props) => {
     
     useEffect(() => {
         setInvalid(props.misc.validator(inputValue));
-    },[props.misc.validator]);
+    },[inputValue,props.misc]);
     
     const changeHandler = (event) => {
         formContext.updateField({[fieldName] : event.target.value});
@@ -22,7 +22,6 @@ const useInput = (props) => {
 
     const touchHandler = (event) => {
         setHasTouched(true);
-        setInvalid(props.misc.validator(event.target.value));
     }
 
     return{

@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import FormContext from "./FormContext";
 
 const useCheckbox = (props) => {
@@ -11,9 +11,9 @@ const useCheckbox = (props) => {
     const [isInvalid,setInvalid] = useState(false);
     const [hasTouched,setHasTouched] = useState(false);
     
-    // useEffect(() => {
-    //     setInvalid(props.misc.validator(inputValue));
-    // },[props.misc.validator]);
+    useEffect(() => {
+        setInvalid(!inputValue);
+    },[inputValue]);
     
     const changeHandler = (event) => {
         formContext.updateField({[fieldName] : event.target.checked});
@@ -22,7 +22,6 @@ const useCheckbox = (props) => {
 
     const touchHandler = (event) => {
         setHasTouched(true);
-        setInvalid(!event.target.checked);
     }
 
     return{
