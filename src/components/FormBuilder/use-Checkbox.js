@@ -6,17 +6,26 @@ const useCheckbox = (props) => {
     const formContext = useContext(FormContext);
     const fieldName = props.input.name;
 
-    const inputValue = formContext.formState[fieldName];
+    const inputValue = formContext.formState[fieldName].value;
 
-    const [isInvalid,setInvalid] = useState(false);
+    const isInvalid = !formContext.formState[fieldName].validity;
     const [hasTouched,setHasTouched] = useState(false);
     
     useEffect(() => {
-        setInvalid(!inputValue);
-    },[inputValue]);
-    
+        formContext.updateField({
+            [fieldName] : {
+                value : inputValue,
+                validity: inputValue
+            }
+        });
+    },[]);
     const changeHandler = (event) => {
-        formContext.updateField({[fieldName] : event.target.checked});
+        formContext.updateField({
+            [fieldName] : {
+                value : event.target.checked,
+                validity: event.target.checked
+            }
+        });
         touchHandler(event);
     }
 

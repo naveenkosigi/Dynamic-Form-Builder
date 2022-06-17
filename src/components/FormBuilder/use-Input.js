@@ -6,17 +6,28 @@ const useInput = (props) => {
     const formContext = useContext(FormContext);
     const fieldName = props.input.name;
 
-    const inputValue = formContext.formState[fieldName];
+    const inputValue = formContext.formState[fieldName].value;
 
-    const [isInvalid,setInvalid] = useState(false);
+    const isInvalid = !formContext.formState[fieldName].validity;
     const [hasTouched,setHasTouched] = useState(false);
-    
+
     useEffect(() => {
-        setInvalid(!!props.misc.validator(inputValue));
-    },[inputValue]);
+        formContext.updateField({
+            [fieldName] : {
+                value : inputValue,
+                validity: !props.misc.validator(inputValue)
+            }
+        });
+    },[])
     
     const changeHandler = (event) => {
-        formContext.updateField({[fieldName] : event.target.value});
+        
+        formContext.updateField({
+            [fieldName] : {
+                value : event.target.value,
+                validity: !props.misc.validator(event.target.value)
+            }
+        });
         setHasTouched(true);
     }
 

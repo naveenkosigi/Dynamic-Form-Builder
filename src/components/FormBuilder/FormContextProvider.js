@@ -4,15 +4,18 @@ import FormContext from "./FormContext";
 
 const FormContextProvider = (props) => {
 
+    const FORMSTATE_VALUE_KEY = "value";
+    const FORMSTATE_VALIDITY_KEY="validity";
+
     const constructedPayload = useMemo(() => {
         const payLoad = {};
 
         props.formOptions.forEach((option) => {
             const inputName = option.input?.name || option.select?.name;
-            payLoad[inputName] = '';
+            payLoad[inputName] = {[FORMSTATE_VALUE_KEY] : '' , [FORMSTATE_VALIDITY_KEY] : false};
 
-            if(option.input?.type === 'checkbox') payLoad[inputName] = false;
-            if(option.select) payLoad[inputName] = 'Value 3';
+            if(option.input?.type === 'checkbox') payLoad[inputName] = {[FORMSTATE_VALUE_KEY] : false , [FORMSTATE_VALIDITY_KEY] : false};
+            if(option.select) payLoad[inputName] = {[FORMSTATE_VALUE_KEY] : '' , [FORMSTATE_VALIDITY_KEY] : false};
         });
 
         console.log("payload constructor");

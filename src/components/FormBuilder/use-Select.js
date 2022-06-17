@@ -6,17 +6,27 @@ const useSelect  = (props) => {
     const formContext = useContext(FormContext);
     const fieldName = props.select.name;
 
-    const inputValue = formContext.formState[fieldName];
+    const inputValue = formContext.formState[fieldName].value;
 
-    const [isInvalid,setInvalid] = useState(false);
+    const isInvalid = !formContext.formState[fieldName].validity;
     const [hasTouched,setHasTouched] = useState(false);
 
     useEffect(() => {
-        setInvalid(inputValue.trim().length === 0);
-    },[inputValue]);
+        formContext.updateField({
+            [fieldName] : {
+                value : inputValue,
+                validity: !(inputValue.trim().length === 0)
+            }
+        });
+    },[]);
 
     const changeHandler = (event) => {
-        formContext.updateField({[fieldName] : event.target.value});
+        formContext.updateField({
+            [fieldName] : {
+                value : event.target.value,
+                validity: !(event.target.value.trim().length === 0)
+            }
+        });
         setHasTouched(true);
     }
 
