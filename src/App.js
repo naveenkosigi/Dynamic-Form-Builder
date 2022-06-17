@@ -34,7 +34,7 @@ function App() {
               {name : 'Option 1',value : "Value 1"},
               {name : 'Option 2',value : "Value 2"},
               {name : 'Option 3',value : "Value 3"},
-              {name : 'Option 4',value : "Value 4"},
+              {name : 'Option 4',value : "Value 4"}
             ]
           }
         }
