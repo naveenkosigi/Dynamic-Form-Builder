@@ -8,8 +8,8 @@ function App() {
   console.log("App render");
 
   return (
-    <div className="container">
-      <h1>Form Builder POC</h1>
+    <div className="mt-5 p-5 container" style={{width: "50%",boxShadow: "0 10px 10px -5px",backgroundColor: "white",borderRadius:"50px"}}>
+      <h1 style={{textAlign:'center'}}>Form Builder POC</h1>
       <FormContextProvider formOptions={[
         {
           label : {name : 'Test Field'},

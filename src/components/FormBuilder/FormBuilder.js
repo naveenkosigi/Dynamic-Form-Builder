@@ -50,12 +50,14 @@ const FormBuilder = (props) => {
   return (
     <form>
       {formConstructor}
+      <div className="form-submit-cancel-container" style={{textAlign:"center"}}>
       <button type="button" className="btn btn-primary" onClick={submitHandler}>
         Save
       </button>
       <button type="button" className="btn btn-danger" onClick={cancelHandler}>
         Cancel
       </button>
+      </div>
     </form>
   );
 };
