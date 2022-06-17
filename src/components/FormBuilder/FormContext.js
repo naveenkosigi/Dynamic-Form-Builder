@@ -4,7 +4,8 @@ const FormContext = createContext({
     payload : {},
     updateField : () => {},
     resetForm : () => {},
-    resetField : () => {}
+    resetField : () => {},
+    validity:false
 });
 
 export default FormContext

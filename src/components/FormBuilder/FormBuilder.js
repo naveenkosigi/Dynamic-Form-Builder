@@ -32,7 +32,15 @@ const FormBuilder = (props) => {
   const formContext = useContext(FormContext);
 
   const submitHandler = () => {
-    console.log(formContext.payload);
+    
+    console.log("Form Payload",formContext.payload);
+
+    if(formContext.validity === true){
+      console.log("Form Valid");
+    }
+    else{
+      console.log("Form Invalid");
+    }
   };
 
   const cancelHandler = () => {

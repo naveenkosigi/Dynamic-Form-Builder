@@ -18,26 +18,26 @@ const Select = (props) => {
   const isFieldValid = hasTouched && isInvalid;
 
   const dropDownList = props.options.dropDownOptions.options.map((option,index) => {
-    return (<option value={option.value}>{option.name}</option>);
+    return (<option value={option.value} key={index + 1}>{option.name}</option>);
   });
 
   return (
-    <div class="form-group">
+    <div className="form-group">
       <label htmlFor={props.options.select.id}>
         {props.options.label.name}
       </label>
       <select value={inputValue}
         {...props.options.select}
-        class="form-control"
+        className="form-control"
         id={props.options.select.id}
         name={props.options.select.name}
         onBlur={touchHandler}
         onChange={changeHandler}
       >
-        <option value="">{props.options.dropDownOptions.placeholder}</option>
+        <option value="" key={1}>{props.options.dropDownOptions.placeholder}</option>
         {dropDownList}
       </select>
-      {isFieldValid && <p class="text-danger">Error Field</p>}
+      {isFieldValid && <p className="text-danger">Error Field</p>}
     </div>
   );
 

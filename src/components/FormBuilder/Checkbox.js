@@ -22,16 +22,6 @@ const Checkbox = (props) => {
         ...props.options.input
     };
 
-    const fieldName = props.options.input.name ;
-    
-    const updatedData = {[fieldName] : inputValue};
-    
-    const formContext = useContext(FormContext);
-
-    useEffect(() => {
-        formContext.updateField(updatedData);
-    },[inputValue])
-
     return (
     //   <div className="form-group form-check">
     //     <label htmlFor={props.options.input.id}>
@@ -48,12 +38,12 @@ const Checkbox = (props) => {
     //     {isFieldValid && <p class="text-danger">Error Field</p>}
     //   </div>
 
-    <div class="form-group form-check">
-    <label class="form-check-label">
-        <input type="checkbox" onChange={changeHandler} name={props.options.input.name} class="form-check-input" checked={inputValue === true}/>
+    <div className="form-group form-check">
+    <label className="form-check-label">
+        <input type="checkbox" onChange={changeHandler} name={props.options.input.name} className="form-check-input" checked={inputValue === true}/>
         {props.options.label.name}
     </label>
-    {isFieldValid && <p class="text-danger">Error Field</p>}
+    {isFieldValid && <p className="text-danger">Error Field</p>}
     </div>
     );
 }

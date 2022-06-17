@@ -13,7 +13,7 @@ const useInput = (props) => {
     
     useEffect(() => {
         setInvalid(!!props.misc.validator(inputValue));
-    },[inputValue,props.misc,inputValue]);
+    },[inputValue]);
     
     const changeHandler = (event) => {
         formContext.updateField({[fieldName] : event.target.value});
