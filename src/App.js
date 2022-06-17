@@ -29,7 +29,13 @@ function App() {
           label : {name : 'Test Field 3'},
           select : {name:'field4',id:'id4'},
           dropDownOptions : {
-            placeholder : 'Select A Value'
+            placeholder : 'Select A Value',
+            options : [
+              {name : 'Option 1',value : "Value 1"},
+              {name : 'Option 2',value : "Value 2"},
+              {name : 'Option 3',value : "Value 3"},
+              {name : 'Option 4',value : "Value 4"},
+            ]
           }
         }
       ]}/>

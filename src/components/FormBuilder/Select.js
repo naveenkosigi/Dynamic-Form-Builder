@@ -11,15 +11,17 @@
  */
 const Select = (props) => {
 
+
+  const dropDownList = props.options.dropDownOptions.options.map((option,index) => {
+    return (<option value={option.value}>{option.name}</option>);
+  });
+
   return (
     <div class="form-group">
       <label htmlFor={props.options.select.id}>{props.options.label.name}</label>
       <select {...props.options.select} class="form-control" id={props.options.select.id} name={props.options.select.name}>
         <option value="">{props.options.dropDownOptions.placeholder}</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
+        {dropDownList}
       </select>
     </div>
   );
