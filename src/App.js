@@ -24,6 +24,13 @@ function App() {
         {
           label : {name : 'Test Field 3'},
           input : {type : 'checkbox',name : 'field3',id:'id3'}
+        },
+        {
+          label : {name : 'Test Field 3'},
+          select : {name:'field4',id:'id4'},
+          dropDownOptions : {
+            placeholder : 'Select A Value'
+          }
         }
       ]}/>
     </div>

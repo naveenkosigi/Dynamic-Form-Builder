@@ -8,9 +8,10 @@ const FormContextProvider = (props) => {
         const payLoad = {};
 
         props.formOptions.forEach((option) => {
-            const inputName = option.input.name;
+            const inputName = option.input?.name || option.select?.name;
             payLoad[inputName] = '';
-            if(option.input.type === 'checkbox') payLoad[inputName] = false;
+            
+            if(option.input?.type === 'checkbox') payLoad[inputName] = false;
         });
 
         console.log("payload constructor");

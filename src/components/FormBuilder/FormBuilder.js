@@ -2,6 +2,7 @@ import { useContext, useMemo, useReducer } from "react"
 import Checkbox from "./Checkbox";
 import FormContext from "./FormContext";
 import Input from "./Input";
+import Select from "./Select";
 /*  [
      {label : {}
  *   input : {} 
@@ -12,13 +13,20 @@ import Input from "./Input";
 */
 const FormBuilder = (props) => {
   const formConstructor = props.formOptions.map((option, index) => {
-    switch(option.input.type.toLowerCase()){
-        case 'checkbox':
-            return <Checkbox options={option} key={index} />
-        case 'text':
-        case 'number':
-            return <Input options={option} key={index} />
+    
+    if (option.input) {
+      switch (option.input.type.toLowerCase()) {
+        case "checkbox":
+          return <Checkbox options={option} key={index} />;
+        case "text":
+        case "number":
+          return <Input options={option} key={index} />;
+      }
     }
+    else if (option.select) {
+      return <Select options={option} key={index} />
+    }
+
   });
 
   const formContext = useContext(FormContext);
