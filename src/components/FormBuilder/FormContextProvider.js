@@ -42,7 +42,7 @@ const FormContextProvider = (props) => {
 
     const context = useContext(FormContext);
 
-    context.payload = state;
+    context.formState = state;
     context.updateField = (data) => {formActionDispatcher({type : 'UPDATE', data : data})};
     context.resetForm = () => {formActionDispatcher({type : 'RESET'})};
 

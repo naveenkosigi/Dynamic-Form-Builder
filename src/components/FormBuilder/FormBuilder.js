@@ -33,7 +33,7 @@ const FormBuilder = (props) => {
 
   const submitHandler = () => {
     
-    console.log("Form Payload",formContext.payload);
+    console.log("Form Payload",formContext.formState);
 
     if(formContext.validity === true){
       console.log("Form Valid");

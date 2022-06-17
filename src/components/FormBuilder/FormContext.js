@@ -1,7 +1,7 @@
 import { createContext} from "react";
 
 const FormContext = createContext({
-    payload : {},
+    formState : {},
     updateField : () => {},
     resetForm : () => {},
     resetField : () => {},

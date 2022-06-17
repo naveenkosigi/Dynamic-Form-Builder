@@ -6,7 +6,7 @@ const useSelect  = (props) => {
     const formContext = useContext(FormContext);
     const fieldName = props.select.name;
 
-    const inputValue = formContext.payload[fieldName];
+    const inputValue = formContext.formState[fieldName];
 
     const [isInvalid,setInvalid] = useState(false);
     const [hasTouched,setHasTouched] = useState(false);
