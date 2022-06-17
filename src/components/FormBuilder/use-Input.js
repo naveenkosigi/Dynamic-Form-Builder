@@ -12,8 +12,8 @@ const useInput = (props) => {
     const [hasTouched,setHasTouched] = useState(false);
     
     useEffect(() => {
-        setInvalid(props.misc.validator(inputValue));
-    },[inputValue,props.misc]);
+        setInvalid(!!props.misc.validator(inputValue));
+    },[inputValue,props.misc,inputValue]);
     
     const changeHandler = (event) => {
         formContext.updateField({[fieldName] : event.target.value});

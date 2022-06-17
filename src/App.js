@@ -14,7 +14,7 @@ function App() {
         {
           label : {name : 'Test Field'},
           input : {type : 'number',name : 'field1',id:'id1'},
-          misc : {validator : (value => value > 5)}
+          misc : {validator : (value => (!value || value > 5))}
         },
         {
           label : {name : 'Test Field 2'},
