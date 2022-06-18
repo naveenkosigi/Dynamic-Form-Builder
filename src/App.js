@@ -40,7 +40,7 @@ function App() {
                   { name: "Option 4", value: "Value 4" },
                 ],
               },
-            },
+            }
           ]}
         />
       </div>

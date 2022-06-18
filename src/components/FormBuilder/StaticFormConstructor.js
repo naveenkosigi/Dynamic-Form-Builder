@@ -48,15 +48,11 @@ const StaticFormConstructor = () => {
             }
         }
 
-        console.log(inputConfig);
+        console.log("Generated Config : \n",inputConfig);
         return;
     }
 
   };
-
-  const onShowConfig = (event) => {
-
-  }
 
   return (
     <form onSubmit={onSubmit}>
@@ -132,8 +128,8 @@ const StaticFormConstructor = () => {
       </div> */}
       <div className="buttons-container" style={{ textAlign: "center" }}>
         <button type="submit" className="btn btn-primary">
-          Add Field To Form
-        </button>
+          Print Config To Console
+        </button>        
       </div>
     </form>
   );
