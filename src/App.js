@@ -9,8 +9,8 @@ function App() {
   console.log("App render");
 
   return (
-    <div class="row justify-content-around">
-      <div className="col-5 form-wrapper">
+    <div class="row justify-content-around align-items-center main-page-container">
+      <div className="col-5 form-wrapper" style={{maxHeight:'500px',overflow:'auto'}}>
         <h1 style={{ textAlign: "center" }}>Form Builder POC</h1>
         <FormContextProvider
           formOptions={[
@@ -44,7 +44,7 @@ function App() {
           ]}
         />
       </div>
-      <div className='col-5 form-wrapper'>
+      <div className='col-5 form-wrapper' style={{maxHeight:'569px',overflow:'auto'}}>
         <h1 style={{textAlign : 'center'}}>Get Form Config Here ! </h1>
         <StaticFormConstructor />
       </div>

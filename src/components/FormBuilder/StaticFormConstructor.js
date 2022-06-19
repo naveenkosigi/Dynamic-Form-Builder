@@ -143,6 +143,7 @@ const StaticFormConstructor = () => {
           required
           ref={inputTupeRef}
           name="fieldType"
+          id="fieldType"
           onChange={onInputChange}
         >
           <option value="text">Text</option>
