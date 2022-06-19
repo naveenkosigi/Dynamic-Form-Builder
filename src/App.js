@@ -45,7 +45,7 @@ function App() {
         />
       </div>
       <div className='col-5 form-wrapper'>
-        <h1 style={{textAlign : 'center'}}>Build Form Here ! </h1>
+        <h1 style={{textAlign : 'center'}}>Get Form Config Here ! </h1>
         <StaticFormConstructor />
       </div>
     </div>

@@ -6,15 +6,35 @@ import { useRef, useState } from "react";
 //     misc: { validator: (value) => value.trim().length === 0 },
 //   }
 
+// {
+//     label: { name: "Test Field 3" },
+//     select: { name: "field4", id: "id4" },
+//     dropDownOptions: {
+//       placeholder: "Select A Value",
+//       options: [
+//         { name: "Option 1", value: "Value 1" },
+//         { name: "Option 2", value: "Value 2" },
+//         { name: "Option 3", value: "Value 3" },
+//         { name: "Option 4", value: "Value 4" },
+//       ],
+//     },
+//   }
+
 const StaticFormConstructor = () => {
   const inputTupeRef = useRef();
+  const selectOptionsRef = useRef();
 
   const [showValidator, setShowValidator] = useState(true);
+  const [showSelect, setShowSelect] = useState(false);
 
   const onInputChange = (event) => {
     if (event.target.value === "text" || event.target.value === "number") {
       setShowValidator(true);
+      setShowSelect(false);
       return;
+    }
+    if(event.target.value === 'select'){
+        setShowSelect(true);
     }
     setShowValidator(false);
   };
@@ -50,6 +70,40 @@ const StaticFormConstructor = () => {
 
         console.log("Generated Config : \n",inputConfig);
         return;
+    }
+    else if(inputTupeRef.current.value === 'select'){
+        const inputConfig = {};
+        inputConfig.label={};
+        inputConfig.select={};
+        inputConfig.dropDownOptions={};
+
+        for(let [key,value] of formData){
+            switch(key){
+                case 'fieldLabel':
+                    inputConfig.label = {};
+                    inputConfig.label.name=value;
+                    break;
+                case 'fieldName':
+                    inputConfig.select.name=value;
+                    inputConfig.select.id=value;
+                    break;               
+            }
+        }
+
+        inputConfig.dropDownOptions.placeholder = "Select a value";
+
+        const options = selectOptionsRef.current.value;
+
+        const optionsConfig=options.split(",").map((Option) => {
+            const option = {};
+            option.name=option.value=Option;
+            return option;
+        });
+
+        inputConfig.dropDownOptions.options = optionsConfig;
+        console.log("Generated Config : \n",inputConfig);
+        return;
+
     }
 
   };
@@ -97,39 +151,43 @@ const StaticFormConstructor = () => {
           <option value="select">Select</option>
         </select>
       </div>
-      {showValidator && (<div class="form-group">
-        <label for="fieldValidation">Field Validation</label>
-        <input
-          type="text"
-          class="form-control"
-          id="fieldValidation"
-          placeholder="Eg. value > 10 && value<20"
-          name="fieldValidation"
-          required
-        />
-        <small id="validationField" class="form-text text-muted">
-          The callback returns the Param as value for input type elements
-        </small>
-      </div>
+      {showValidator && (
+        <div class="form-group">
+          <label for="fieldValidation">Field Validation</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fieldValidation"
+            placeholder="Eg. value > 10 && value<20"
+            name="fieldValidation"
+            required
+          />
+          <small id="smallValidationField" class="form-text text-muted">
+            The callback returns the Param as value for input type elements
+          </small>
+        </div>
       )}
-      {/* <div class="form-group">
-        <label for="fieldValidation">Field Validation</label>
-        <input
-          type="text"
-          class="form-control"
-          id="fieldValidation"
-          placeholder="Eg. value > 10 && value<20"
-          name="fieldValidation"
-          required
-        />
-        <small id="validationField" class="form-text text-muted">
-          The callback returns the Param as value for input type elements
-        </small>
-      </div> */}
+      {showSelect && (
+        <div class="form-group">
+          <label for="fieldSelectOptions">Select Options</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fieldSelectOptions"
+            placeholder="Eg. Apple,Orange,Mango"
+            name="fieldSelectOptions"
+            required
+            ref={selectOptionsRef}
+          />
+          <small id="smallFieldSelectOptions" class="form-text text-muted">
+            Enter the required options comma seperated
+          </small>
+        </div>
+      )}
       <div className="buttons-container" style={{ textAlign: "center" }}>
         <button type="submit" className="btn btn-primary">
           Print Config To Console
-        </button>        
+        </button>
       </div>
     </form>
   );
