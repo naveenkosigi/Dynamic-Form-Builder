@@ -67,8 +67,7 @@ const StaticFormConstructor = () => {
                     break;                
             }
         }
-
-        console.log("Generated Config : \n",inputConfig);
+        alert(JSON.stringify(inputConfig));
         return;
     }
     else if(inputTupeRef.current.value === 'select'){
@@ -101,7 +100,7 @@ const StaticFormConstructor = () => {
         });
 
         inputConfig.dropDownOptions.options = optionsConfig;
-        console.log("Generated Config : \n",inputConfig);
+        alert(JSON.stringify(inputConfig));
         return;
 
     }
@@ -187,7 +186,7 @@ const StaticFormConstructor = () => {
       )}
       <div className="buttons-container" style={{ textAlign: "center" }}>
         <button type="submit" className="btn btn-primary">
-          Print Config To Console
+          Show Configuration
         </button>
       </div>
     </form>
